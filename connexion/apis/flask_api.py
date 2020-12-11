@@ -312,5 +312,8 @@ class InternalHandlers(object):
         Modify base_path in the spec based on incoming url
         This fixes problems with reverse proxies changing the path.
         """
-        base_path = flask.url_for(flask.request.endpoint).rsplit("/", 1)[0]
-        return self.specification.with_base_path(base_path).raw
+        if self.options.disable_servers_overwrite == True:
+            return self.specification.raw
+        else:
+            base_path = flask.url_for(flask.request.endpoint).rsplit("/", 1)[0]
+            return self.specification.with_base_path(base_path).raw

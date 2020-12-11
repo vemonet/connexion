@@ -112,6 +112,16 @@ class ConnexionOptions(object):
         return self._options.get('swagger_path', self.swagger_ui_local_path)
 
     @property
+    def disable_servers_overwrite(self):
+        # type: () -> str
+        """
+        Disable servers overwrite in openapi specs defined by the user
+
+        Default: 
+        """
+        return self._options.get('disable_servers_overwrite', self.disable_servers_overwrite)
+
+    @property
     def openapi_console_ui_config(self):
         # type: () -> dict
         """
